@@ -1,0 +1,63 @@
+@font-face
+{
+	font-family: Unicorn;
+	src: url('../fonts/unicorn.ttf');
+}
+        	
+body
+{
+    padding-top: 20px;
+}
+
+html body
+{
+    background-color: #0b5fb5;
+}
+
+h1
+{
+    text-align: center;
+    font-size: 48px !important;
+}
+
+a
+{
+	text-decoration: none !important;
+}
+
+#link
+{
+	position: relative;
+}
+
+#linkSpan
+{
+	position: absolute;
+	width: 50%;
+	height: 120%;
+	top: -10%;
+	left: 25%;
+	z-index: 1;
+}
+
+.centered
+{
+	text-align: center;
+}
+
+.jumbotron
+{
+	padding-top: 10px;
+	padding-bottom: 30px;
+	margin-bottom: 30px;
+	color: inherit;
+	background-color: #eee;
+}
+
+.fixed
+{
+	position: fixed!important;
+	width: 50%!important;
+	top: 0;
+	left: centered;
+}
