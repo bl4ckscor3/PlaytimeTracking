@@ -19,7 +19,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>
 		$(window).scroll(function() {
-			if($(window).scrollTop() > 226)
+			if($(window).scrollTop() > 190)
 				$(".fixedbar").addClass("fixed");
 			else
 				$(".fixedbar").removeClass("fixed");

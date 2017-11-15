@@ -54,6 +54,16 @@ a
 	background-color: #eee;
 }
 
+.fixedbar
+{
+	padding-left: 0px!important;
+}
+
+.container .jumbotron
+{
+	border-radius: 0px;
+}
+
 .fixed
 {
 	position: fixed!important;
