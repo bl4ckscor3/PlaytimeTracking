@@ -59,15 +59,15 @@ a
 	padding-left: 0px!important;
 }
 
-.container .jumbotron
-{
-	border-radius: 0px;
-}
-
 .fixed
 {
 	position: fixed!important;
 	width: 50%!important;
 	top: 0;
 	left: centered;
+}
+
+.table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th
+{
+	background-color: #ddd;
 }

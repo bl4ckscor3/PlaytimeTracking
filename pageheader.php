@@ -1,3 +1,8 @@
+<?php 
+    require('api.php');
+    $mysql = getMysql();
+?>
+
 <div id="link">
 	<a href="index.php"><span id="linkSpan"></span></a>
     	<h1><font face="Unicorn">Map Tracking</font></h1>
