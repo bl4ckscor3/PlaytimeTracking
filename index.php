@@ -23,18 +23,30 @@
 						</tr>
 						<?php
 							$names = $mysql->query("SELECT * FROM names");
-							$times = $mysql->query("SELECT * FROM times");
-							$maps = $mysql->query("SELECT * FROM maps");
 							
 							while($name = $names->fetch_assoc())
 							{
 								$id = $name['steamid'];
-								$lastname = $name['lastname'];?>
+								$lastname = $name['lastname'];
+								$times = $mysql->query("SELECT * FROM times WHERE steamid=\"".$mysql->real_escape_string($id)."\"");
+								$totaltime = 0.0;
+								$tryhardtime = 0.0;
+								$ratio = 0.0;
+
+								while($time = $times->fetch_assoc())
+								{
+									$totaltime += floatval($time['time']);
+
+									if($mysql->query("SELECT * FROM maps WHERE map=\"".$mysql->real_escape_string($time['map'])."\"")->fetch_assoc()['tryhard'] == 1)
+										$tryhardtime += floatval($time['time']);
+								}
+								
+								$ratio = round(($tryhardtime / $totaltime) * 10, PHP_ROUND_HALF_UP) / 10;?>
 								
 								<tr onclick="location.href='user.php?id=<?php echo $id;?>'" style="cursor: pointer">
 									<td><?php echo $id;?></td>
 									<td><?php echo $lastname;?></td>
-									<td>N/A</td>
+									<td><?php echo $ratio;?></td>
 								</tr>
 						<?php }?>
 					</table>
