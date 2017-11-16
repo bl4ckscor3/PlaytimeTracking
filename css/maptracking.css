@@ -3,21 +3,21 @@
 	font-family: Unicorn;
 	src: url('../fonts/unicorn.ttf');
 }
-        	
+			
 body
 {
-    padding-top: 20px;
+	padding-top: 20px;
 }
 
 html body
 {
-    background-color: #0b5fb5;
+	background-color: #0b5fb5;
 }
 
 h1
 {
-    text-align: center;
-    font-size: 48px !important;
+	text-align: center;
+	font-size: 48px !important;
 }
 
 a
