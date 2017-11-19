@@ -57,14 +57,13 @@ a
 .fixedbar
 {
 	padding-left: 0px!important;
+	padding-right: 0px!important;
 }
 
 .fixed
 {
 	position: fixed!important;
-	width: 50%!important;
 	top: 0;
-	left: centered;
 }
 
 .table-striped > tbody > tr:nth-child(2n) > td, .table-striped > tbody > tr:nth-child(2n) > th
