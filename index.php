@@ -33,9 +33,11 @@
 							<th>Tryhard Ratio</th>
 						</tr>
 						<?php
+							require('account.php');
 							$max = 20 * $page;
 							$min = $max > 19 ? $max - 19 : 0;
-							$names = $mysql->query("SELECT * FROM names WHERE id>=".$mysql->real_escape_string($min)." AND id<=".$mysql->real_escape_string($max)." ORDER BY id ASC");
+							$names = $mysql->query("SELECT * FROM names ORDER BY id ASC");
+							$accounts = array();
 							
 							while($name = $names->fetch_assoc())
 							{
@@ -66,17 +68,24 @@
 								
 								while($minutes >= 60)
 								{
-								    $hours += 1;
-								    $minutes -= 60;
-								}?>
+									$hours += 1;
+									$minutes -= 60;
+								}
 								
+								$accounts[] = new Account($id, $lastname, $hours, $minutes, $ratio);
+							}
+							
+							usort($accounts, "cmp_desc");
+							
+							for($c = ($min - 1); $c < ($max); $c++)
+							{?>
 								<tr onclick="location.href='user.php?id=<?php echo $id;?>'" style="cursor: pointer">
-									<td><?php echo $id;?></td>
-									<td><?php echo $lastname;?></td>
-									<td><?php echo $hours."h:".$minutes."m"?></td>
-									<td><?php echo $ratio;?></td>
+								<td><?php echo $accounts[$c]->id;?></td>
+								<td><?php echo $accounts[$c]->lastname;?></td>
+								<td><?php echo $accounts[$c]->hours."h:".$accounts[$c]->minutes."m"?></td>
+								<td><?php echo $accounts[$c]->ratio;?></td>
 								</tr>
-						<?php }?>
+					  <?php }?>
 					</table>
 				</div>
 			</div>
