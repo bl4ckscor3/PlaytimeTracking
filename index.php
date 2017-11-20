@@ -98,16 +98,14 @@
 		$(window).scroll(function() {
 			if($(window).scrollTop() > 190 && !toggle)
 			{
- 				$(".fixedbar").addClass("fixed");
- 				document.getElementById("placeholder").innerHTML = "<div class=\"jumbotron\" style=\"padding-bottom: 20px; padding-top: 20px; margin-bottom: 0px\"></div>";
 				$("#placeholder").height($(".fixedbar").height());
+ 				$(".fixedbar").addClass("fixed");
  				$("#child").width($("#parent").width());
  				toggle = true;
 			}
 			else if($(window).scrollTop() <= 190 && toggle)
 			{
 				$(".fixedbar").removeClass("fixed");
-				document.getElementById("placeholder").innerHTML = "";
 				$("#placeholder").height(0);
 				toggle = false;
 			}
