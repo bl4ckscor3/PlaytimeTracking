@@ -22,21 +22,39 @@
         }
     }
     
-    function cmp_asc($a, $b)
+    function cmpPlaytimeAsc($a, $b)
     {
     	if($a->getTotalTimeMinutes() < $b->getTotalTimeMinutes())
     		return -1;
-    		else if($a->getTotalTimeMinutes() > $b->getTotalTimeMinutes())
-    			return 1;
-    			else return 0;
+		else if($a->getTotalTimeMinutes() > $b->getTotalTimeMinutes())
+			return 1;
+		else return 0;
     }
     
-    function cmp_desc($a, $b)
+    function cmpPlaytimeDesc($a, $b)
     {
     	if($a->getTotalTimeMinutes() < $b->getTotalTimeMinutes())
     		return 1;
-    		else if($a->getTotalTimeMinutes() > $b->getTotalTimeMinutes())
-    			return -1;
-    			else return 0;
+		else if($a->getTotalTimeMinutes() > $b->getTotalTimeMinutes())
+			return -1;
+		else return 0;
+    }
+    
+    function cmpRatioAsc($a, $b)
+    {
+        if($a->ratio < $b->ratio)
+            return -1;
+        else if($a->ratio > $b->ratio)
+            return 1;
+        else return 0;
+    }
+    
+    function cmpRatioDesc($a, $b)
+    {
+        if($a->ratio < $b->ratio)
+            return 1;
+        else if($a->ratio > $b->ratio)
+            return -1;
+        else return 0;
     }
 ?>
