@@ -93,29 +93,38 @@
 	</body>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 	<script>
-		var once = false;
+		var toggle = false;
 		
 		$(window).scroll(function() {
-			if($(window).scrollTop() > 190)
+			if($(window).scrollTop() > 190 && !toggle)
 			{
  				$(".fixedbar").addClass("fixed");
- 				document.getElementById("placeholder").innerHTML = "<div class=\"jumbotron\" style=\"padding-bottom: 20px; padding-top: 20px; margin-bottom: 0px\"><form><button class=\"btn btn-info btn-md\" type=\"submit\" style=\"float: left\"><span class=\"glyphicon glyphicon-search\"></span></button><input class=\"form-control\" name=\"search\" type=\"text\" placeholder=\"Search for Steam ID or last known name\" style=\"width: 20em\"></form></div>";
-
- 				if(!once)
- 				{
- 	 				$("#child").width($("#parent").width());
- 	 				once = true;
- 				}
+ 				document.getElementById("placeholder").innerHTML = "<div class=\"jumbotron\" style=\"padding-bottom: 20px; padding-top: 20px; margin-bottom: 0px\"></div>";
+				$("#placeholder").height($(".fixedbar").height());
+ 				$("#child").width($("#parent").width());
+ 				toggle = true;
 			}
-			else
+			else if($(window).scrollTop() <= 190 && toggle)
 			{
 				$(".fixedbar").removeClass("fixed");
 				document.getElementById("placeholder").innerHTML = "";
+				$("#placeholder").height(0);
+				toggle = false;
 			}
 		});
 
 		$(window).resize(function() {
 			$("#child").width($("#parent").width());
+
+			if(toggle)
+				$("#placeholder").height($(".fixedbar").height());
+			else
+				$("#placeholder").height(0);
 		});
+
+		function reloadTable(cmpFunc)
+		{
+			$("#visibleTable").load("tablecontents.php?cmpFunc=" + cmpFunc + "&reload=1");
+		}
 	</script>
 </html>
