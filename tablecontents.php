@@ -45,7 +45,7 @@
     $max = 20 * $page;
     $min = $max > 19 ? $max - 19 : 0;
    	$names = $mysql->query("SELECT * FROM names ORDER BY id ASC");
-   	$accounts = array();
+   	$entries = array();
    	
    	while($name = $names->fetch_assoc())
    	{
@@ -80,17 +80,17 @@
    			$minutes -= 60;
    		}
    		
-   		$accounts[] = new Account($id, $lastname, $hours, $minutes, $ratio);
+   		$entries[] = new Account($id, $lastname, $hours, $minutes, $ratio);
    	}
 
-	usort($accounts, $_GET['cmpFunc']);
+	usort($entries, $_GET['cmpFunc']);
 	
 	for($c = ($min - 1); $c < ($max); $c++)
 	{?>
 		<tr onclick="location.href='user.php?id=<?php echo $id;?>'" style="cursor: pointer">
-			<td><?php echo $accounts[$c]->id;?></td>
-			<td><?php echo $accounts[$c]->lastname;?></td>
-			<td><?php echo $accounts[$c]->hours."h:".$accounts[$c]->minutes."m"?></td>
-			<td><?php echo $accounts[$c]->ratio;?></td>
+			<td><?php echo $entries[$c]->id;?></td>
+			<td><?php echo $entries[$c]->lastname;?></td>
+			<td><?php echo $entries[$c]->hours."h:".$entries[$c]->minutes."m"?></td>
+			<td><?php echo $entries[$c]->ratio;?></td>
 		</tr> <?php
     }?>
