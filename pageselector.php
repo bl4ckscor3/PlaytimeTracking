@@ -15,15 +15,15 @@
 			}
 			else if($i == 1)
 			{
-				echo "<a href=\"index.php\">".$i."</a> ";
+				echo "<a href=\"index.php?cmpFunc=".$_GET['cmpFunc']."\">".$i."</a> ";
 			}
 			else
 			{
-				echo "<a href=\"index.php?page=".$i."\">".$i."</a> ";
+				echo "<a href=\"index.php?page=".$i."&cmpFunc=".$_GET['cmpFunc']."\">".$i."</a> ";
 			}
 		}
 		?>
-	<?php echo $page < $ceiled ? "<a href=\"index.php?page=".($page + 1)."\">" : ""?>
+	<?php echo $page < $ceiled ? "<a href=\"index.php?page=".($page + 1)."&cmpFunc=".$_GET['cmpFunc']."\">" : ""?>
 	<button class="btn btn-warning<?php echo $page >= $ceiled ? " disabled" : "";?>"><span class="glyphicon glyphicon-arrow-right"></span></button>
 	<?php echo $page < $ceiled ? "</a>" : "";?>
 </h4>

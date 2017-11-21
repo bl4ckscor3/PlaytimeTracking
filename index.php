@@ -1,8 +1,9 @@
-<?php 
+<?php
+	if(!isset($_GET['cmpFunc']))
+		$_GET['cmpFunc'] = "cmpPlaytimeDesc";
+
 	if(!isset($_GET['page']))
-	{
 		$_GET['page'] = 1;
-	}
 	
 	$page = $_GET['page'];
 ?>
@@ -25,16 +26,8 @@
 				</div>
 				<h2>Player Times</h2><br>
 				<div class="table-responsive">
-					<?php
-    					require('account.php');
-    					$accounts = array();
-    				?>
 					<table class="table table-striped" id="visibleTable">
-						<?php
-						    $_GET['reload'] = 0;
-						    $_GET['cmpFunc'] = "cmpPlaytimeDesc";
-						    require('tablecontents.php');
-						?>
+						<?php require('tablecontents.php');?>
 					</table>
 				</div>
 			</div>
@@ -68,10 +61,5 @@
 			else
 				$("#placeholder").height(0);
 		});
-
-		function reloadTable(cmpFunc)
-		{
-			$("#visibleTable").load("tablecontents.php?cmpFunc=" + cmpFunc + "&reload=1");
-		}
 	</script>
 </html>
